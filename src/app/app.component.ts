@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {TasksService} from './tasks.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'PersonalTrelloDashboard';
+
+  constructor(private tasksService: TasksService) {
+  }
+
+  showTasks() {
+    this.tasksService.getTasksData().subscribe(data => {
+      console.log('getUserData() ');
+      console.log(data);
+    });
+  }
 }
